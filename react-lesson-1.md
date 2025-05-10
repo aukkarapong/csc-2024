@@ -34,6 +34,7 @@ npm -v
 - ESLint
 - Prettier
 - ES7+ React/Redux/React-Native snippets
+- React Developer Tools
 - Tailwind CSS IntelliSense (ถ้าใช้ Tailwind)
 
 ---

@@ -140,3 +140,31 @@ npm install --save-dev nodemon
 
 npm run dev
 ```
+
+## express-validator
+```js
+npm install express-validator
+
+// create folder validators
+// create userValidator.js ใน folder validators
+
+// userValidator.js
+const {body} = require("express-validator");
+
+exports.userValidationRules = [
+  body("name").notEmpty().withMessage("Name is required"),
+  body("email").isEmail().withMessage("Valid email is required"),
+];
+
+
+// routes/users.js
+const {userValidationRules} = require("../validators/userValidator");
+const {validationResult} = require("express-validator");
+
+router.post("/", userValidationRules, async (req, res) => {
+
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({errors: errors.array()});
+  }
+```
